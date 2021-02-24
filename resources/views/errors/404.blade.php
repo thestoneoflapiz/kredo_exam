@@ -8,7 +8,7 @@
 @section("content")
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
-    <div class="sub-header-empty-space--md"></div>
+    <div class="empty-space--md"></div>
     <!--end::Subheader-->
 
     <!--begin::Entry-->

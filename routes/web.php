@@ -27,12 +27,7 @@ Route::get('about-us', function () {
     $data = [
         "page" => [
             "title" => "About Us",
-            "breadcrumbs" => [
-                [
-                    "url" => "",
-                    "name" => "About Us"
-                ]
-            ]
+            "breadcrumbs" => [ ]
         ]
     ];
 
@@ -43,12 +38,7 @@ Route::get('resources', function () {
     $data = [
         "page" => [
             "title" => "Resources",
-            "breadcrumbs" => [
-                [
-                    "url" => "",
-                    "name" => "Resources"
-                ]
-            ]
+            "breadcrumbs" => [ ]
         ]
     ];
 
@@ -59,12 +49,7 @@ Route::get('our-offices', function () {
     $data = [
         "page" => [
             "title" => "Our Offices",
-            "breadcrumbs" => [
-                [
-                    "url" => "",
-                    "name" => "Our Offices"
-                ]
-            ]
+            "breadcrumbs" => [ ]
         ]
     ];
 

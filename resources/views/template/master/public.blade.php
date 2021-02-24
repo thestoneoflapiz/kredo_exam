@@ -45,7 +45,7 @@
 	<!--end::Head-->
 
 	<!--begin::Body-->
-	<body id="kt_body" style="background-image: url({{ asset('media/bg/bg-10.jpg') }})" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
+	<body id="kt_body" style="background-image: url({{ asset('media/bg/bg-11.jpg') }})" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
 		<!--begin::Main-->
         <!--begin::Header Mobile-->
         <div id="kt_header_mobile" class="header-mobile">

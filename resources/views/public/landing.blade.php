@@ -9,7 +9,7 @@
 @section("content")
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
-    <div class="sub-header-empty-space--xs"></div>
+    <div class="empty-space--xs"></div>
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <h1 class="hero-banner-title">
@@ -18,7 +18,7 @@
             </h1>
         </div>
     </div>
-    <div class="sub-header-empty-space--xxs"></div>
+    <div class="empty-space--xxs"></div>
     <!--end::Subheader-->
 
     <!--begin::Entry-->
