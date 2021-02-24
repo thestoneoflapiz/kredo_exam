@@ -14,5 +14,77 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $data = [
+        "page" => [
+            "title" => "Home"
+        ]
+    ];
+
+    return view('public.landing', $data);
+})->name("homepage");
+
+Route::get('about-us', function () {
+    $data = [
+        "page" => [
+            "title" => "About Us",
+            "breadcrumbs" => [
+                [
+                    "url" => "",
+                    "name" => "About Us"
+                ]
+            ]
+        ]
+    ];
+
+    return view('public.about-us', $data);
+})->name("aboutuspage");
+
+Route::get('resources', function () {
+    $data = [
+        "page" => [
+            "title" => "Resources",
+            "breadcrumbs" => [
+                [
+                    "url" => "",
+                    "name" => "Resources"
+                ]
+            ]
+        ]
+    ];
+
+    return view('public.resources', $data);
+})->name("resourcespage");
+
+Route::get('our-offices', function () {
+    $data = [
+        "page" => [
+            "title" => "Our Offices",
+            "breadcrumbs" => [
+                [
+                    "url" => "",
+                    "name" => "Our Offices"
+                ]
+            ]
+        ]
+    ];
+
+    return view('public.our-offices', $data);
+})->name("ourofficespage");
+
+
+Route::get('contact-us', function () {
+    $data = [
+        "page" => [
+            "title" => "Contact Us",
+        ]
+    ];
+
+    return view('public.contact-us', $data);
+})->name("contactuspage");
+
+/**
+ * Login
+ */
+Route::get("admin", function() {
+    return view("auth.login");
+})->name("auth.admin.login");

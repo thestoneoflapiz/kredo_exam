@@ -1,0 +1,15 @@
+.sub-header-empty-space--xs{
+    margin-top: 3.5rem;
+}
+
+.sub-header-empty-space--sm{
+    margin-top: 8rem;
+}
+
+.sub-header-empty-space--md{
+    margin-top: 13rem;
+}
+
+.sub-header-empty-space--lg{
+    margin-top: 18rem;
+}
