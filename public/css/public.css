@@ -71,7 +71,7 @@
 
 }
 
-.ul-arrows a {
+.ul-arrows a, .ul-arrows li {
     font-size: 1.2rem;
     font-weight: 600;
     color: rgb(44, 44, 44);

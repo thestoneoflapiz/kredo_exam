@@ -5,7 +5,7 @@
         <div class="d-flex align-items-stretch mr-3">
             <!--begin::Header Logo-->
             <div class="header-logo">
-                <a href="index.html">
+                <a href="/">
                     <img alt="Logo" src="{{ asset('system/logo-h.png') }}" class="logo-default max-h-40px" />
                     <img alt="Logo" src="{{ asset('system/logo-dark.png') }}" class="logo-sticky max-h-40px" />
                 </a>
@@ -36,18 +36,23 @@
                             <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                                 <ul class="menu-subnav">
                                     <li class="menu-item">
-                                        <a href="javascript:;" class="menu-link menu-toggle">
-                                            <span class="svg-icon menu-icon">
-                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo2\dist/../src/media/svg/icons\Code\Puzzle.svg-->
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24" height="24"/>
-                                                        <path d="M19,11 L20,11 C21.6568542,11 23,12.3431458 23,14 C23,15.6568542 21.6568542,17 20,17 L19,17 L19,20 C19,21.1045695 18.1045695,22 17,22 L5,22 C3.8954305,22 3,21.1045695 3,20 L3,17 L5,17 C6.65685425,17 8,15.6568542 8,14 C8,12.3431458 6.65685425,11 5,11 L3,11 L3,8 C3,6.8954305 3.8954305,6 5,6 L8,6 L8,5 C8,3.34314575 9.34314575,2 11,2 C12.6568542,2 14,3.34314575 14,5 L14,6 L17,6 C18.1045695,6 19,6.8954305 19,8 L19,11 Z" fill="#000000" opacity="0.3"/>
-                                                    </g>
-                                                </svg>
-                                            <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-text">No Services yet</span>
+                                        <a href="/services/example1" class="menu-link">
+                                            <span class="menu-text">Cup & Green</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="/services/example2" class="menu-link">
+                                            <span class="menu-text">Yellow Background</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="/services/example3" class="menu-link">
+                                            <span class="menu-text">Shoes & Blue</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="/services/example4" class="menu-link">
+                                            <span class="menu-text">Red Boots</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -71,25 +76,21 @@
                             </a>
                             <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                                 <ul class="menu-subnav">
-                                    @if($catergories = ($catergories ?? [] ) && count($catergories) > 0)
-                                        @include("template.header.public.category-list")
-                                    @else
                                     <li class="menu-item">
-                                        <a href="javascript:;" class="menu-link menu-toggle">
-                                            <span class="svg-icon menu-icon">
-                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo2\dist/../src/media/svg/icons\Code\Puzzle.svg-->
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24" height="24"/>
-                                                        <path d="M19,11 L20,11 C21.6568542,11 23,12.3431458 23,14 C23,15.6568542 21.6568542,17 20,17 L19,17 L19,20 C19,21.1045695 18.1045695,22 17,22 L5,22 C3.8954305,22 3,21.1045695 3,20 L3,17 L5,17 C6.65685425,17 8,15.6568542 8,14 C8,12.3431458 6.65685425,11 5,11 L3,11 L3,8 C3,6.8954305 3.8954305,6 5,6 L8,6 L8,5 C8,3.34314575 9.34314575,2 11,2 C12.6568542,2 14,3.34314575 14,5 L14,6 L17,6 C18.1045695,6 19,6.8954305 19,8 L19,11 Z" fill="#000000" opacity="0.3"/>
-                                                    </g>
-                                                </svg>
-                                            <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-text">No Blog yet</span>
+                                        <a href="/blogs/where-is-it" class="menu-link">
+                                            <span class="menu-text">Where is it?</span>
                                         </a>
                                     </li>
-                                    @endif
+                                    <li class="menu-item">
+                                        <a href="/blogs/where-is-it" class="menu-link">
+                                            <span class="menu-text">Where is it?</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="/blogs/where-is-it" class="menu-link">
+                                            <span class="menu-text">Where is it?</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
