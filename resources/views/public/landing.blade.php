@@ -9,7 +9,16 @@
 @section("content")
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
-    <div class="sub-header-empty-space--lg"></div>
+    <div class="sub-header-empty-space--xs"></div>
+    <div class="d-flex flex-column-fluid">
+        <div class="container">
+            <h1 class="hero-banner-title">
+                Lorem ipsum dolor sit amet <br/>
+                <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit</small>
+            </h1>
+        </div>
+    </div>
+    <div class="sub-header-empty-space--xxs"></div>
     <!--end::Subheader-->
 
     <!--begin::Entry-->
@@ -28,8 +37,9 @@
                                 <!--begin::Body-->
                                 <div class="card-body d-flex flex-column">
                                     <!--begin::Title-->
-                                    <a href="#" class="text-dark-75 text-hover-primary font-weight-bolder font-size-h3">Properties</a>
+                                    <!-- <a href="#" class="text-dark-75 text-hover-primary font-weight-bolder font-size-h3"></a> -->
                                     <!--end::Title-->
+                                    <img src="{{ asset('system/logo-100x100.png') }}" height="100" width="100"/>
                                 </div>
                                 <!--end::Body-->
                             </div>
@@ -41,10 +51,10 @@
                                 <!--begin::Body-->
                                 <div class="card-body d-flex align-items-center justify-content-between flex-wrap">
                                     <div class="mr-2">
-                                        <h3 class="font-weight-bolder">Create CRM Reports</h3>
-                                        <div class="text-dark-50 font-size-lg mt-2">Generate the latest CRM Report</div>
+                                        <h3 class="font-weight-bolder">Need it ASAP?</h3>
+                                        <div class="text-dark-50 font-size-lg mt-2">Excepteur sint occaecat cupidatat non proident </div>
                                     </div>
-                                    <a href="#" class="btn btn-primary font-weight-bold py-3 px-6">Start Now</a>
+                                    <a href="/contact-us" class="btn btn-primary font-weight-bold py-3 px-6">Contact Us</a>
                                 </div>
                                 <!--end::Body-->
                             </div>
@@ -58,9 +68,11 @@
                                 <!--begin::Body-->
                                 <div class="card-body d-flex align-items-center">
                                     <div>
-                                        <h3 class="text-white font-weight-bolder line-height-lg mb-5">Create SaaS
-                                        <br />Based Reports</h3>
-                                        <a href='#' class="btn btn-success font-weight-bold px-6 py-3">Create Report</a>
+                                        <h3 class="text-white font-weight-bolder line-height-lg mb-5">
+                                            Lorem ipsum dolor<br/>
+                                            <small>Lorem ipsum dolor sit amet</small>
+                                        </h3>
+                                        <a href='/services' class="btn btn-success font-weight-bold px-6 py-3">View Services</a>
                                     </div>
                                 </div>
                                 <!--end::Body-->
@@ -117,10 +129,12 @@
                                 <!--begin::Body-->
                                 <div class="card-body d-flex flex-column align-items-start justify-content-start">
                                     <div class="p-1 flex-grow-1">
-                                        <h3 class="text-white font-weight-bolder line-height-lg mb-5">Create Reports
-                                        <br />With App</h3>
+                                        <h3 class="text-white font-weight-bolder line-height-lg mb-5">
+                                            Lorem ipsum dolor<br/>
+                                            <small>Lorem ipsum dolor sit amet</small>
+                                        </h3>
                                     </div>
-                                    <a href='#' class="btn btn-link btn-link-warning font-weight-bold">Create Report
+                                    <a href='/blogs' class="btn btn-link btn-link-warning font-weight-bold">View Blogs
                                     <span class="svg-icon svg-icon-lg svg-icon-warning">
                                         <!--begin::Svg Icon |  media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

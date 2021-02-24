@@ -1,5 +1,9 @@
-.sub-header-empty-space--xs{
+.sub-header-empty-space--xxs{
     margin-top: 3.5rem;
+}
+
+.sub-header-empty-space--xs{
+    margin-top: 5.8rem;
 }
 
 .sub-header-empty-space--sm{
@@ -12,4 +16,17 @@
 
 .sub-header-empty-space--lg{
     margin-top: 18rem;
+}
+
+.sub-header-empty-space--xl{
+    margin-top: 22rem;
+}
+
+.sub-header-empty-space--xxl{
+    margin-top: 25rem;
+}
+
+.hero-banner-title{
+    font-size: 3rem;
+    color: #fff;
 }
