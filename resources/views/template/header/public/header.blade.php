@@ -17,87 +17,36 @@
                 <div id="kt_header_menu" class="header-menu header-menu-left header-menu-mobile header-menu-layout-default">
                     <!--begin::Header Nav-->
                     <ul class="menu-nav">
-                        <li class="menu-item menu-item-rel {{ Route::currentRouteName() == 'homepage' ? 'menu-item-active' : '' }}">
+                        <li class="menu-item menu-item-rel {{ Route::currentRouteName() == 'home' ? 'menu-item-active' : '' }}">
                             <a href="/" class="menu-link">
                                 <span class="menu-text">Home</span>
                             </a>
                         </li>
-                        <li class="menu-item menu-item-rel {{ Route::currentRouteName() == 'aboutuspage' ? 'menu-item-active' : '' }}">
-                            <a href="/about-us" class="menu-link">
-                                <span class="menu-text">About Us</span>
-                            </a>
-                        </li>
-                        <li class="menu-item menu-item-submenu menu-item-rel {{ Request::segment(1) == 'services' ? 'menu-item-active' : '' }}" data-menu-toggle="click" aria-haspopup="true">
+                        <li class="menu-item menu-item-submenu menu-item-rel {{ Request::segment(1) == 'profile' || Request::segment(1) == 'account' ? 'menu-item-active' : '' }}" data-menu-toggle="click" aria-haspopup="true">
                             <a href="javascript:;" class="menu-link menu-toggle">
-                                <span class="menu-text">Services</span>
+                                <span class="menu-text">My Profile</span>
                                 <span class="menu-desc"></span>
                                 <i class="menu-arrow"></i>
                             </a>
                             <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                                 <ul class="menu-subnav">
                                     <li class="menu-item">
-                                        <a href="/services/example1" class="menu-link">
-                                            <span class="menu-text">Cup & Green</span>
+                                        <a href="/profile" class="menu-link">
+                                            <span class="menu-text">View Profile</span>
                                         </a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="/services/example2" class="menu-link">
-                                            <span class="menu-text">Yellow Background</span>
+                                        <a href="/account" class="menu-link">
+                                            <span class="menu-text">Account Settings</span>
                                         </a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="/services/example3" class="menu-link">
-                                            <span class="menu-text">Shoes & Blue</span>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="/services/example4" class="menu-link">
-                                            <span class="menu-text">Red Boots</span>
+                                        <a href="/sign-out" class="menu-link">
+                                            <span class="menu-text">Sign Out</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="menu-item menu-item-rel {{ Route::currentRouteName() == 'resourcespage' ? 'menu-item-active' : '' }}">
-                            <a href="/resources" class="menu-link">
-                                <span class="menu-text">Resouces</span>
-                            </a>
-                        </li>
-                        <li class="menu-item menu-item-rel {{ Route::currentRouteName() == 'ourofficespage' ? 'menu-item-active' : '' }}">
-                            <a href="/our-offices" class="menu-link">
-                                <span class="menu-text">Our Offices</span>
-                            </a>
-                        </li>
-                        <li class="menu-item menu-item-submenu menu-item-rel {{ Request::segment(1) == 'blog' ? 'menu-item-active' : '' }}" data-menu-toggle="click" aria-haspopup="true">
-                            <a href="javascript:;" class="menu-link menu-toggle">
-                                <span class="menu-text">Blog</span>
-                                <span class="menu-desc"></span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="menu-submenu menu-submenu-classic menu-submenu-left">
-                                <ul class="menu-subnav">
-                                    <li class="menu-item">
-                                        <a href="/blogs/where-is-it" class="menu-link">
-                                            <span class="menu-text">Where is it?</span>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="/blogs/where-is-it" class="menu-link">
-                                            <span class="menu-text">Where is it?</span>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="/blogs/where-is-it" class="menu-link">
-                                            <span class="menu-text">Where is it?</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="menu-item menu-item-rel {{ Route::currentRouteName() == 'contactuspage' ? 'menu-item-active' : '' }}">
-                            <a href="/contact-us" class="menu-link">
-                                <span class="menu-text">Contact Us</span>
-                            </a>
                         </li>
                     </ul>
                     <!--end::Header Nav-->

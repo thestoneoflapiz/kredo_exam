@@ -68,7 +68,7 @@
 					</div>
 					<!--end::Aside Top-->
 					<!--begin::Aside Bottom-->
-					<div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url({{ asset('media/svg/illustrations/login-visual-5.svg') }})"></div>
+					<div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url({{ asset('media/svg/illustrations/login-visual-2.svg') }})"></div>
 					<!--end::Aside Bottom-->
 				</div>
 				<!--begin::Aside-->
@@ -84,7 +84,7 @@
 								
                                 <!--begin::Title-->
 								<div class="pb-13 pt-lg-0 pt-5">
-									<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome!</h3>
+									<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Join us! Fill up this form</h3>
 									<!-- <span class="text-muted font-weight-bold font-size-h4">New Here?
 									<a href="javascript:;" id="kt_login_signup" class="text-primary font-weight-bolder">Create an Account</a></span> -->
 								</div>
@@ -92,25 +92,38 @@
 								
                                 <!--begin::Form group-->
 								<div class="form-group">
+									<label class="font-size-h6 font-weight-bolder text-dark">Name</label>
+									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="text" name="name" autocomplete="off" />
+								</div>
+								<!--end::Form group-->
+
+                                <!--begin::Form group-->
+								<div class="form-group">
 									<label class="font-size-h6 font-weight-bolder text-dark">Email</label>
 									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="text" name="email" autocomplete="off" />
 								</div>
 								<!--end::Form group-->
-								<!--begin::Form group-->
+
+                                <!--begin::Form group-->
 								<div class="form-group">
-									<div class="d-flex justify-content-between mt-n5">
-										<label class="font-size-h6 font-weight-bolder text-dark pt-5">Password</label>
-										<a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Forgot Password ?</a>
-									</div>
+									<label class="font-size-h6 font-weight-bolder text-dark">Password</label>
 									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="password" name="password" autocomplete="off" />
 								</div>
 								<!--end::Form group-->
 
+                                <!--begin::Form group-->
+								<div class="form-group">
+									<label class="font-size-h6 font-weight-bolder text-dark">Confirm Password</label>
+									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="password" name="confirm_password" autocomplete="off" />
+								</div>
+								<!--end::Form group-->
+                                
+
 								<!--begin::Action-->
 								<div class="pb-lg-0 pb-5">
-									<button type="button" id="kt_login_signin_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>
+									<button type="button" id="kt_register_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Register</button>
                                     &nbsp; or &nbsp;&nbsp;&nbsp; 
-									<button type="button" class="btn btn-outline-secondary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3" onclick="window.location='/register'">Register</button>
+									<button type="button" class="btn btn-outline-secondary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3" onclick="window.location='/'">Sign In</button>
 								</div>
 								<!--end::Action-->
 
@@ -118,32 +131,6 @@
 							<!--end::Form-->
 						</div>
 						<!--end::Signin-->
-
-						<!--begin::Forgot-->
-						<div class="login-form login-forgot">
-							<!--begin::Form-->
-							<form class="form" novalidate="novalidate" id="kt_login_forgot_form">
-								<!--begin::Title-->
-								<div class="pb-13 pt-lg-0 pt-5">
-									<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Forgotten Password ?</h3>
-									<p class="text-muted font-weight-bold font-size-h4">Enter your email to reset your password</p>
-								</div>
-								<!--end::Title-->
-								<!--begin::Form group-->
-								<div class="form-group">
-									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="email" placeholder="Email" name="email" autocomplete="off" />
-								</div>
-								<!--end::Form group-->
-								<!--begin::Form group-->
-								<div class="form-group d-flex flex-wrap pb-lg-0">
-									<button type="button" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Submit</button>
-									<button type="button" id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Cancel</button>
-								</div>
-								<!--end::Form group-->
-							</form>
-							<!--end::Form-->
-						</div>
-						<!--end::Forgot-->
 					</div>
 					<!--end::Content body-->
 					<!--begin::Content footer-->
@@ -193,10 +180,20 @@
                         KTUtil.getById('kt_login_signin_form'),
                         {
                             fields: {
+                                name: {
+                                    validators: {
+                                        notEmpty: {
+                                            message: 'Your name is required'
+                                        }
+                                    }
+                                },
                                 email: {
                                     validators: {
                                         notEmpty: {
                                             message: 'Your email is required'
+                                        },
+                                        emailAddress: {
+                                            message: 'The value is not a valid email address'
                                         }
                                     }
                                 },
@@ -204,6 +201,19 @@
                                     validators: {
                                         notEmpty: {
                                             message: 'Your password is required'
+                                        }
+                                    }
+                                },
+                                confirm_password: {
+                                    validators: {
+                                        notEmpty: {
+                                            message: 'You need to confirm your password'
+                                        },
+                                        identical: {
+                                            compare: function() {
+                                                return $('[name="password"]').val();
+                                            },
+                                            message: 'Password does not match!'
                                         }
                                     }
                                 }
@@ -216,18 +226,19 @@
                         }
                     );
 
-                    $('#kt_login_signin_submit').on('click', function (e) {
+                    $('#kt_register_submit').on('click', function (e) {
                         e.preventDefault();
 
-                        $("#kt_login_signin_submit").addClass("spinner spinner-white spinner-right").prop("disabled", true);
+                        $("#kt_register_submit").addClass("spinner spinner-white spinner-right").prop("disabled", true);
 
                         validation.validate().then(function(status) {
                             if (status == 'Valid') {
                                 $.ajax({
-                                    url: "/login/action",
+                                    url: "/register/action",
                                     method: "POST",
                                     data: {
                                         _token: "{{ csrf_token() }}",
+                                        name: $("[name='name']").val(),
                                         email: $("[name='email']").val(),
                                         password: $("[name='password']").val(),
                                     },
@@ -238,7 +249,7 @@
                                         }, 1500);
                                     },
                                     error: function(err){
-                                        $("#kt_login_signin_submit").removeClass("spinner spinner-white spinner-right").prop("disabled", false);
+                                        $("#kt_register_submit").removeClass("spinner spinner-white spinner-right").prop("disabled", false);
 
                                         var body = err.responseJSON;
                                         if(body.hasOwnProperty("message")){
@@ -251,7 +262,7 @@
                                 });
                                 
                             } else {
-                                $("#kt_login_signin_submit").removeClass("spinner spinner-white spinner-right").prop("disabled", false);
+                                $("#kt_register_submit").removeClass("spinner spinner-white spinner-right").prop("disabled", false);
                                 swal.fire({
                                     text: "Sorry, looks like there are some errors detected. Please try again.",
                                     icon: "error",
@@ -266,97 +277,8 @@
                             }
                         });
                     });
-
-                    // Handle forgot button
-                    $('#kt_login_forgot').on('click', function (e) {
-                        e.preventDefault();
-                        _showForm('forgot');
-                    });
-
-                    // Handle signup
-                    $('#kt_login_signup').on('click', function (e) {
-                        e.preventDefault();
-                        _showForm('signup');
-                    });
+             
                 }
-
-                var _handleForgotForm = function(e) {
-                    var validation;
-
-                    // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
-                    validation = FormValidation.formValidation(
-                        KTUtil.getById('kt_login_forgot_form'),
-                        {
-                            fields: {
-                                email: {
-                                    validators: {
-                                        notEmpty: {
-                                            message: 'Your email is required'
-                                        },
-                                        emailAddress: {
-                                            message: 'The value is not a valid email address'
-                                        }
-                                    }
-                                }
-                            },
-                            plugins: {
-                                trigger: new FormValidation.plugins.Trigger(),
-                                bootstrap: new FormValidation.plugins.Bootstrap()
-                            }
-                        }
-                    );
-
-                    // Handle submit button
-                    $('#kt_login_forgot_submit').on('click', function (e) {
-                        e.preventDefault();
-
-                        validation.validate().then(function(status) {
-                            if (status == 'Valid') {
-                                toastr.success("Email sent! Please check your inbox in a few minutes...");
-                                // $.ajax({
-                                //     url: "/forgot-password/action",
-                                //     method: "POST",
-                                //     data: {
-                                //         _token: "{{ csrf_token() }}",
-                                //         email: $("[name='email']").val(),
-                                //     },
-                                //     success: function(){
-                                //         toastr.success("Email sent! Please check your inbox in a few minutes...");
-                                //     },
-                                //     error: function(err){
-                                //         var body = err.responseJSON;
-                                //         if(body.hasOwnProperty("message")){
-                                //             toastr.error(body.message);
-                                //             return;
-                                //         }
-
-                                //         toastr.error("Something went wrong! Please try again later...");
-                                //     }
-                                // });
-                            } else {
-                                swal.fire({
-                                    text: "Sorry, looks like there are some errors detected, please try again.",
-                                    icon: "error",
-                                    buttonsStyling: false,
-                                    confirmButtonText: "Ok, got it!",
-                                    customClass: {
-                                        confirmButton: "btn font-weight-bold btn-light-primary"
-                                    }
-                                }).then(function() {
-                                    KTUtil.scrollTop();
-                                });
-                            }
-                        });
-                    });
-
-                    // Handle cancel button
-                    $('#kt_login_forgot_cancel').on('click', function (e) {
-                        e.preventDefault();
-
-                        _showForm('signin');
-                    });
-                }
-
                 // Public Functions
                 return {
                     // public functions
@@ -364,7 +286,6 @@
                         _login = $('#kt_login');
 
                         _handleSignInForm();
-                        _handleForgotForm();
                     }
                 };
             }();

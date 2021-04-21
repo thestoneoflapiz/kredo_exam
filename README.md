@@ -1,12 +1,38 @@
-## Static Web Pages
+## Thank you for visiting this repository!
 
-- Landing pages
-- Home
-- Contact Form
-- Blogs
-- Services
-- Offices
-- About Us
-- Login Form
+What is this? 
+This is a KREDO Web Development Exam
 
-## Copyright @ 2021 
+## How to run it? 
+You need the following tools:
+1. Composer
+2. Git
+3. VSCODE (optional)
+4. XAMPP or LAMP
+
+## Follow these steps:
+1. Clone this repository in your local machine
+2. Create a `.env`, then copy and paste the details in `.env.example` to `.env` file. Make sure to change every details accordingly.
+        2.1 Database credentials
+        2.2 Your app URL 
+        2.3 Application KEY
+3. Run `composer install`
+4. Run `php artisan key:generate`
+5. Run `php artisan migrate:fresh --seed` then `php artisan serve`
+
+
+## Login credentials
+EMAIL: myemail@user.com
+PASSWORD: myuser123$$
+
+
+## What to Expect?
+- Registration and Login Feature
+- User Profile Feature
+- Post with Comments Feature
+- Follow Feature
+- Search "post"
+- Chat Feature
+
+
+## 2021 by thestoneoflapiz
