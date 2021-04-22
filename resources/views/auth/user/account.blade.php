@@ -21,6 +21,56 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="card card-custom gutter-b">
+                        <div class="card-body">
+                            <form class="form" id="form_details">
+                                <div class="row">
+                                    <div class="form-group col">
+                                        <label class="col-12">Birthday</label>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control" name="birthday" value="{{ $user->birthday }}"/>
+                                            <span class="form-text text-muted"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col">
+                                        <label class="col-12">Gender</label>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control" name="gender" value="{{ $user->gender }}"/>
+                                            <span class="form-text text-muted"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col">
+                                        <label class="col-12">Location</label>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control" name="location" value="{{ $user->location }}"/>
+                                            <span class="form-text text-muted"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col">
+                                        <label class="col-12">Description</label>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control" name="description" value="{{ $user->description }}"/>
+                                            <span class="form-text text-muted"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-9 ml-lg-auto">
+                                        <button type="submit" id="form_details_submit_button" class="btn btn-primary font-weight-bold mr-2">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="card card-custom gutter-b">
                         @if($user->email_verified_at==null)
                         <div class="card-header">
                             <div class="card-title">
@@ -105,6 +155,52 @@
 
 @section("scripts")
 <script>
+
+    jQuery(document).ready(function(){
+
+        $("[name='birthday']").datepicker();
+    });
+    FormValidation.formValidation(
+        document.getElementById('form_details'),
+        {
+            fields: {},
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                // Bootstrap Framework Integration
+                bootstrap: new FormValidation.plugins.Bootstrap(),
+                // Validate fields when clicking the Submit button
+                submitButton: new FormValidation.plugins.SubmitButton(),
+            }
+        }
+    ).on("core.form.invalid", function(){
+        KTUtil.scrollTop();
+    }).on("core.form.valid", function(){
+        var $submit_btn = $("#form_details_submit_button");
+        $submit_btn.addClass("spinner spinner-white spinner-right").prop("disabled", true);
+
+        $.ajax({
+            url: "/account/details",
+            method: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                birthday: $("[name='birthday']").val(),
+                gender: $("[name='gender']").val(),
+                location: $("[name='location']").val(),
+                description: $("[name='description']").val(),
+            },
+            success: function(){
+                toastr.success("Details updated! Please check your inbox for verification.");
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            },
+            error: function(err){
+                $submit_btn.removeClass("spinner spinner-white spinner-right").prop("disabled", false);
+                toastr.error("Something went wrong! Please refresh your browser and try again...");
+            }
+        });
+    });
+
     FormValidation.formValidation(
         document.getElementById('form_email'),
         {

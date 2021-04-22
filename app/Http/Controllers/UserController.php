@@ -33,4 +33,32 @@ class UserController extends Controller
             return response()->json([], 400);
         }
     }
+
+    function change_details(Request $request)
+    {
+        $user = User::find(Auth::id());
+        $user->birthday = $request->birthday ?? null;
+        $user->gender = $request->gender ?? null;
+        $user->location = $request->location ?? null;
+        $user->description = $request->description ?? null;
+        $user->updated_at = date("Y-m-d H:i:s");
+        $user->save();
+
+        return response()->json([]);
+    }
+
+    function upload(Request $request){
+
+        dd($request->all());
+        return response()->json([]);
+    }
+
+    function remove_profile_image(Request $request){
+
+        $user = User::find(Auth::id());
+        $user->avatar = null;
+        $user->save();
+        
+        return response()->json([]);
+    }
 }

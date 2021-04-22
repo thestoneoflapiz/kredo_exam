@@ -36,7 +36,7 @@ Route::get('/register', function () {
     ];
 
     if(Auth::check()){
-        return view("auth.feed.page");
+        return redirect("/");
     }
 
     return view('auth.register', $data);
@@ -57,9 +57,7 @@ Route::middleware(["auth"])->group(function () {
     })->name("auth.post");
 
     Route::get('/account', function () {
-        $user = User::select(
-            "id", "email", "password", "email_verified_at"
-        )->find(Auth::id());
+        $user = User::find(Auth::id());
 
         if(!$user){
             return abort(404);
@@ -73,21 +71,61 @@ Route::middleware(["auth"])->group(function () {
             "user" => $user,
         ]; 
         return view('auth.user.account', $data);
-    })->name("auth.post");
+    })->name("auth.user.account");
     Route::post("account/email", [App\Http\Controllers\UserController::class, "change_email"]);
+    Route::post("account/details", [App\Http\Controllers\UserController::class, "change_details"]);
     Route::post("account/password", [App\Http\Controllers\UserController::class, "change_password"]);
 
     Route::get('/profile', function () {
+        $user = User::select(
+            "id", "email", "password", "email_verified_at"
+        )->find(Auth::id());
+
+        if(!$user){
+            return abort(404);
+        }
+
         $data = [
             "page" => [
-                "title" => "...Profile"
-            ]
-        ];
+                "title" => "Profile",
+                "breadcrumbs" => []
+            ],
+            "user" => $user,
+        ]; 
+
+        $data["followers"] = _get_num_followers($user->id);
+        $data["following"] = _get_num_following($user->id);
 
         return view('auth.user.profile', $data);
-    })->name("auth.post");
+    })->name("auth.user.profile");
+
+    Route::get('/profile/{id}', function () {
+        $user = User::select(
+            "id", "email", "password", "email_verified_at"
+        )->find(Auth::id());
+
+        if(!$user){
+            return abort(404);
+        }
+
+        $data = [
+            "page" => [
+                "title" => "Profile",
+                "breadcrumbs" => []
+            ],
+            "user" => $user,
+        ]; 
+        return view('auth.user.profile', $data);
+    })->name("auth.other.profile");
+    Route::post("profile/upload", [App\Http\Controllers\UserController::class, "upload"]);
+    Route::post("profile/remove", [App\Http\Controllers\UserController::class, "remove_profile_image"]);
 
     Route::get("sign-out", [App\Http\Controllers\LoginController::class, "logout"]);
+
+
+    Route::post("post/create", [App\Http\Controllers\PostController::class, "create"]);
+    Route::post("post/edit", [App\Http\Controllers\PostController::class, "edit"]);
+    Route::post("post/delete", [App\Http\Controllers\PostController::class, "delete"]);
 });
 
 
