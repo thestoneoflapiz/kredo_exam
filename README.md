@@ -22,8 +22,18 @@ You need the following tools:
 
 
 ## Login credentials
-EMAIL: myemail@user.com
-PASSWORD: myuser123$$
+EMAIL: my_one_user@email.com
+PASSWORD: 12345678
+
+EMAIL: my_two_user@email.com
+PASSWORD: 12345678
+
+EMAIL: my_three_user@email.com
+PASSWORD: 12345678
+
+EMAIL: my_four_user@email.com
+PASSWORD: 12345678
+
 
 
 ## What to Expect?

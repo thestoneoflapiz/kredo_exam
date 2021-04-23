@@ -38,6 +38,12 @@
 		<!--begin::Layout Themes(used by all pages)-->
 		<link href="{{ asset('css/public.css') }}" rel="stylesheet" type="text/css" />
         @yield("styles")
+		<style>
+		.img_for_posts{
+			width:50px; height:45px;
+			margin:5px 10px;
+		}
+		</style>
 		<!--end::Layout Themes-->
 
 		<link rel="shortcut icon" href="{{ asset('system/favico.png') }}" />
@@ -158,6 +164,14 @@
         <!--begin::Page Scripts(used by this page)-->
         @yield("scripts")
 		<!--end::Page Scripts-->
+
+		<script>
+		$("[name=search_posts]").on('keypress',function(e) {
+			if(e.which == 13) {
+				window.location="/search/posts?keyword="+e.target.value;
+			}
+		});
+		</script>
 	</body>
 	<!--end::Body-->
 </html>

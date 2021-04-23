@@ -77,9 +77,7 @@ Route::middleware(["auth"])->group(function () {
     Route::post("account/password", [App\Http\Controllers\UserController::class, "change_password"]);
 
     Route::get('/profile', function () {
-        $user = User::select(
-            "id", "email", "password", "email_verified_at"
-        )->find(Auth::id());
+        $user = User::find(Auth::id());
 
         if(!$user){
             return abort(404);
@@ -99,10 +97,8 @@ Route::middleware(["auth"])->group(function () {
         return view('auth.user.profile', $data);
     })->name("auth.user.profile");
 
-    Route::get('/profile/{id}', function () {
-        $user = User::select(
-            "id", "email", "password", "email_verified_at"
-        )->find(Auth::id());
+    Route::get('/profile/{id}', function (Request $request) {
+        $user = User::find($request->id);
 
         if(!$user){
             return abort(404);
@@ -115,6 +111,13 @@ Route::middleware(["auth"])->group(function () {
             ],
             "user" => $user,
         ]; 
+
+        $followed = Follower::where([
+            "user_id" => $request->id,
+            "user_follower_id" => Auth::id()
+        ])->first();
+
+        $data["is_a_follower"] = $followed ? true : false;
         return view('auth.user.profile', $data);
     })->name("auth.other.profile");
     Route::post("profile/upload", [App\Http\Controllers\UserController::class, "upload"]);
@@ -123,9 +126,24 @@ Route::middleware(["auth"])->group(function () {
     Route::get("sign-out", [App\Http\Controllers\LoginController::class, "logout"]);
 
 
+    Route::get("posts/{id}", [App\Http\Controllers\PostController::class, "fetch_user_posts"]);
+    Route::get("following/posts", [App\Http\Controllers\PostController::class, "fetch_following_posts"]);
+    Route::get("post/threads/{id}", [App\Http\Controllers\PostController::class, "fetch_post_threads"]);
+    Route::post("post/thread/create/{id}", [App\Http\Controllers\PostController::class, "create_thread"]);
     Route::post("post/create", [App\Http\Controllers\PostController::class, "create"]);
+    Route::get("post/view/{id}", [App\Http\Controllers\PostController::class, "view"]);
     Route::post("post/edit", [App\Http\Controllers\PostController::class, "edit"]);
     Route::post("post/delete", [App\Http\Controllers\PostController::class, "delete"]);
+
+    Route::post("comment/edit", [App\Http\Controllers\PostController::class, "comment_edit"]);
+    Route::post("comment/delete", [App\Http\Controllers\PostController::class, "comment_delete"]);
+
+    Route::get("search/posts", [App\Http\Controllers\PostController::class, "search_posts"]);
+    Route::get("users", [App\Http\Controllers\UserController::class, "fetch_users"]);
+
+
+    Route::get("unfollow/{id}", [App\Http\Controllers\FollowerController::class, "unfollow"]);
+    Route::get("follow/{id}", [App\Http\Controllers\FollowerController::class, "follow"]);
 });
 
 

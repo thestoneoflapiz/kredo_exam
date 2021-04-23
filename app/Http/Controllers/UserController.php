@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\{ User };
 use Auth;
 use Hash;
+use Storage;
+use File;
 
 class UserController extends Controller
 {
@@ -49,7 +51,15 @@ class UserController extends Controller
 
     function upload(Request $request){
 
-        dd($request->all());
+        $user = User::find(Auth::id());
+        $path = "avatars/".(Auth::id()??"0")."/";
+        $filename = Auth::id().uniqid().".".$request->file->extension();
+
+        Storage::disk('public_uploads')->putFileAs($path, $request->file, $filename);
+        
+        $user->avatar = $path.$filename;
+        $user->save();
+
         return response()->json([]);
     }
 
@@ -60,5 +70,19 @@ class UserController extends Controller
         $user->save();
         
         return response()->json([]);
+    }
+
+    function fetch_users(){
+        $users = User::all();
+
+        $data = [
+            "page" => [
+                "title" => "Users",
+                "breadcrumbs" => []
+            ],
+            "users" => $users
+        ]; 
+
+        return view('auth.user.user', $data);
     }
 }

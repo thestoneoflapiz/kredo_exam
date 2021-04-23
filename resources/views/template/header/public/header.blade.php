@@ -22,6 +22,11 @@
                                 <span class="menu-text">Home</span>
                             </a>
                         </li>
+                        <li class="menu-item menu-item-rel {{ Route::currentRouteName() == 'users' ? 'menu-item-active' : '' }}">
+                            <a href="/users" class="menu-link">
+                                <span class="menu-text">Look for Users</span>
+                            </a>
+                        </li>
                         <li class="menu-item menu-item-submenu menu-item-rel {{ Request::segment(1) == 'profile' || Request::segment(1) == 'account' ? 'menu-item-active' : '' }}" data-menu-toggle="click" aria-haspopup="true">
                             <a href="javascript:;" class="menu-link menu-toggle">
                                 <span class="menu-text">My Profile</span>
@@ -98,7 +103,7 @@
                                         </span>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Search..." />
+                                <input type="text" class="form-control" name="search_posts" placeholder="Search..." />
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="quick-search-close ki ki-close icon-sm text-muted"></i>
